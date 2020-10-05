@@ -6,7 +6,21 @@
 // But instead we're going to implement it from scratch:
 var getElementsByClassName = function(className
 ) {
-  // your code here
-  // terrence hello
-  console.log(hello);
+  var results = [];
+  var checkNode = function (node) {
+    if ( node.elements.contains(className) ) {
+      results.push(node);
+    }
+    if (node.childNode.contains(className)) {
+      node.childNode.forEach(function(item) {
+        checkNode(item);
+      });
+
+    }
+  };
+  //compare classname of the node to classname
+  // save node if it matches
+  // itterate through children nodes
+  //for each child we check node
+  return results;
 };
