@@ -8,19 +8,38 @@ var getElementsByClassName = function(className
 ) {
   var results = [];
   var checkNode = function (node) {
-    if ( node.elements.contains(className) ) {
+
+    var elementClasses = node.classList;
+    if (elementClasses.contains(className)) {
+
       results.push(node);
     }
-    if (node.childNode.contains(className)) {
-      node.childNode.forEach(function(item) {
-        checkNode(item);
-      });
 
+    if (node.childNodes) {
+      for (var i = 0; i < node.children.length; i++) {
+        checkNode(node.children[i]);
+      }
     }
+
+    // if (node.childNodes) {
+    //   node.childNodes.forEach(function(item) {
+    //     checkNode(item);
+    //   });
+
+    // }
   };
+
   //compare classname of the node to classname
   // save node if it matches
   // itterate through children nodes
   //for each child we check node
+  checkNode(document.body);
   return results;
 };
+
+//
+//
+// node.elements !== undefined && node.elements.contains(className) )
+
+
+//
